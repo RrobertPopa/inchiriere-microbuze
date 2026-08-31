@@ -45,7 +45,7 @@ acoperite prin blur. Când există poze reale cu mașinile, se înlocuiesc fiși
 
 hPanel → Website → **GIT** → *Create a new repository*:
 
-- Repository: `https://github.com/Robertica25/inchiriere-microbuze.git`
+- Repository: `https://github.com/RrobertPopa/inchiriere-microbuze.git`
 - Branch: `main`
 - Directory: `public_html`
 
