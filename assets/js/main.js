@@ -8,9 +8,9 @@
    bara de jos de pe mobil și mesajul de WhatsApp).
    ------------------------------------------------------------- */
 const CONFIG = {
-  telefon:  "+40 700 000 000",                    // TODO: numărul real, afișat pe site
-  whatsapp: "40700000000",                        // TODO: același număr, internațional, fără + și fără spații
-  email:    "contact@inchiriere-microbuze.ro",    // TODO: adresa reală (sau șterge linia din footer)
+  telefon:  "0724 436 295",                       // afișat pe site (linkul tel: se face automat)
+  whatsapp: "40724436295",                        // același număr, internațional, fără + și fără spații
+  email:    "contact@inchiriere-microbuze.ro",
 };
 
 /* ---------- aplică datele de contact peste tot ---------- */
