@@ -276,7 +276,7 @@ input[type="range"]::-moz-range-thumb {
 
 /* ---------- șoferul ---------- */
 .sofer { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 6vw, 96px); align-items: center; }
-.sofer-foto img { aspect-ratio: 3 / 4; object-fit: cover; }
+.sofer-foto img { aspect-ratio: 3 / 4; object-fit: cover; object-position: 30% 50%; }
 .sofer-text { background: rgba(239, 233, 221, .8); padding: 8px 0; }
 .sofer-lead { font-size: clamp(17px, 1.45vw, 20px); margin-top: 22px; max-width: 48ch; }
 .sofer-lista { list-style: none; padding: 0; margin: 34px 0 0; border-top: 1px solid var(--linie-tare); }
