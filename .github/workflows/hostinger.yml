@@ -1,0 +1,30 @@
+# La fiecare push pe main: construiește site-ul și pune rezultatul (dist/) pe branch-ul `hostinger`.
+# Hostinger (hPanel → GIT) trage branch-ul `hostinger` în public_html.
+name: Build pentru Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: hostinger
+          force_orphan: true
+          commit_message: "build: ${{ github.sha }}"

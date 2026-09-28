@@ -1,419 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Roby Tours | Circuite în toată țara și internaționale, cu șofer</title>
-<meta name="description" content="Roby Tours — circuite prin toată România și curse internaționale la cerere, cu șofer. Autoturisme, dube și microbuze de la 4+1 la 20+1 locuri.">
-<meta name="theme-color" content="#0B0D10">
-<link rel="canonical" href="https://inchiriere-microbuze.ro/">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ro_RO">
-<meta property="og:site_name" content="Roby Tours">
-<meta property="og:title" content="Roby Tours — circuite în toată țara și internaționale, cu șofer">
-<meta property="og:description" content="Circuite prin toată România și curse internaționale la cerere, cu șofer profesionist. Autoturisme, dube și microbuze de la 4+1 la 20+1 locuri.">
-<meta property="og:image" content="https://inchiriere-microbuze.ro/assets/img/flota-van-negru.jpg">
-<meta property="og:url" content="https://inchiriere-microbuze.ro/">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Roby Tours · Închiriere microbuze cu șofer, Mercedes Sprinter și Renault Trafic</title>
+  <meta name="description" content="Închiriere microbuze cu șofer inclus: Mercedes Sprinter până la 20+1 locuri și Renault Trafic 8+1. Circuite prin România, curse în Europa, transfer aeroport, nunți și transport angajați. Preț fix, spus înainte de plecare.">
+  <link rel="canonical" href="https://inchiriere-microbuze.ro/">
+  <meta name="theme-color" content="#efe9dd">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:title" content="Roby Tours · Microbuze cu șofer">
+  <meta property="og:description" content="Mercedes Sprinter până la 20+1 locuri și Renault Trafic 8+1, cu șofer inclus. Tot grupul, într-un drum.">
+  <meta property="og:image" content="https://inchiriere-microbuze.ro/foto/sprintere-albe-900.jpg">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 </head>
 <body>
+  <a class="skip" href="#continut">Sari la conținut</a>
 
-<a class="btn btn-ghost skip" href="#continut">Sari la conținut</a>
+  <!-- lumea: harta de relief, randată în WebGL -->
+  <canvas id="relief" aria-hidden="true"></canvas>
+  <div class="etichete" id="etichete" aria-hidden="true"></div>
 
-<header id="hdr">
-  <div class="wrap bar">
-    <a class="brand" href="#" aria-label="Roby Tours — acasă">
-      <span class="mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V8a2 2 0 0 1 2-2h9l5 5v6"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M9.3 17.5h5.4M3 11h11"/></svg>
-      </span>
-      <span>Roby Tours<small>Circuite &amp; transport cu șofer</small></span>
+  <header class="antet" id="antet">
+    <a class="marca" href="#sus" aria-label="Roby Tours, la începutul paginii">
+      <span class="marca-nume">Roby Tours</span>
+      <span class="marca-sub">microbuze cu șofer</span>
     </a>
-    <nav class="desk" aria-label="Navigare principală">
-      <a href="#flota">Flotă</a>
-      <a href="#servicii">Servicii</a>
-      <a href="#cum">Cum funcționează</a>
-      <a href="#dece">De ce noi</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#flota">Flota</a>
+      <a href="#sofer">Șoferul</a>
+      <a href="#trasee">Unde mergem</a>
+      <a href="#cum">Cum lucrăm</a>
     </nav>
-    <div class="hdr-cta">
-      <a class="btn btn-ghost" href="#contact">Cere ofertă</a>
-      <a class="btn btn-gold js-tel" href="#">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-        <span class="js-tel-label">Sună acum</span>
-      </a>
-      <button class="burger" id="burger" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mmenu">
-        <span></span><span></span><span></span>
+    <div class="antet-actiuni">
+      <a class="antet-tel js-tel" href="tel:+40724436295"><span class="js-tel-label">0724 436 295</span></a>
+      <a class="buton buton-mic" href="#oferta">Cere ofertă</a>
+      <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="meniu" aria-label="Deschide meniul">
+        <span></span><span></span>
       </button>
     </div>
+  </header>
+
+  <div class="meniu" id="meniu" hidden>
+    <nav class="meniu-nav" aria-label="Meniu mobil">
+      <a href="#flota">Flota</a>
+      <a href="#sofer">Șoferul</a>
+      <a href="#trasee">Unde mergem</a>
+      <a href="#cum">Cum lucrăm</a>
+      <a href="#oferta">Cere ofertă</a>
+    </nav>
+    <div class="meniu-contact">
+      <a class="buton buton-plin js-tel" href="tel:+40724436295">Sună · <span class="js-tel-label">0724 436 295</span></a>
+      <a class="buton buton-contur js-wa" href="https://wa.me/40724436295">Scrie pe WhatsApp</a>
+      <p class="meniu-nota">Răspundem zilnic, inclusiv în weekend.</p>
+    </div>
   </div>
-</header>
 
-<div class="mobile-menu" id="mmenu">
-  <a class="mm-link" href="#flota">Flotă</a>
-  <a class="mm-link" href="#servicii">Servicii</a>
-  <a class="mm-link" href="#cum">Cum funcționează</a>
-  <a class="mm-link" href="#dece">De ce noi</a>
-  <a class="mm-link" href="#contact">Contact</a>
-  <div class="mm-cta">
-    <a class="btn btn-gold js-tel" href="#"><span class="js-tel-label">Sună acum</span></a>
-    <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener">Scrie pe WhatsApp</a>
-  </div>
-</div>
+  <main id="continut">
 
-<main id="continut">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="sus">
+      <p class="hero-sus date">Microbuze cu șofer · de la 8 la 20 de pasageri</p>
+      <h1 class="hero-titlu">Tot grupul, <br>într-un drum.</h1>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Roby Tours · Circuite &amp; transport cu șofer</p>
-      <h1>Descoperă România <em>fără să pui mâna pe volan.</em></h1>
-      <p class="lead">Organizăm circuite prin toată țara și curse internaționale la cerere, cu șofer care cunoaște drumul. Tu alegi destinațiile, noi ne ocupăm de traseu, de orar și de tot ce ține de drum — de la mașini de 4+1 la microbuze de 20+1 locuri.</p>
-      <div class="hero-cta">
-        <a class="btn btn-gold js-tel" href="#">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-          <span class="js-tel-label">Sună acum</span>
-        </a>
-        <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-5-4.4-5.1-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.3 1.1c.3.2.5.2.6.4.1.1.1.6-.1 1.2Z"/></svg>
-          Ofertă pe WhatsApp
-        </a>
+      <div class="hero-jos">
+        <div class="hero-text">
+          <p class="hero-lead">Închiriem microbuze <strong>Mercedes Sprinter</strong> și <strong>Renault Trafic</strong> cu șofer inclus. Voi spuneți unde mergeți și câți sunteți. Noi venim la adresă, conducem tot drumul și vă aducem înapoi.</p>
+          <div class="hero-cta">
+            <a class="buton buton-plin" href="#oferta">Cere ofertă</a>
+            <a class="buton buton-contur js-tel" href="tel:+40724436295">Sună · <span class="js-tel-label">0724 436 295</span></a>
+          </div>
+          <p class="hero-nota">Preț fix, spus înainte de plecare.</p>
+        </div>
+
+        <figure class="placa hero-foto">
+          <img src="./foto/sprintere-albe.jpg" srcset="./foto/sprintere-albe-900.jpg 900w, ./foto/sprintere-albe.jpg 1599w" sizes="(max-width: 900px) 100vw, 52vw" width="1599" height="1200" alt="Trei microbuze Mercedes-Benz Sprinter albe, parcate unul lângă altul">
+          <figcaption><span>Mercedes Sprinter</span><span class="date">până la 20+1 locuri</span></figcaption>
+        </figure>
       </div>
-      <ul class="trust">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Circuite în toată România</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Curse internaționale la cerere</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Preț fix, comunicat din start</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Șoferi care cunosc drumul</li>
+
+      <ul class="legenda" aria-label="Pe scurt">
+        <li><i class="leg-traseu"></i>traseul îl stabilim împreună</li>
+        <li><i class="leg-punct"></i>vă luăm de la adresă</li>
+        <li><i class="leg-linie"></i>România și Europa</li>
       </ul>
-    </div>
-    <div class="hero-media">
-      <div class="shot"><img src="assets/img/flota-van-negru.jpg" alt="Microbuz de transport persoane, pregătit de plecare" width="1800" height="1050" fetchpriority="high"></div>
-      <div class="badge-card">
-        <div class="n">20+1</div>
-        <div class="t">locuri maxime<br>într-o singură cursă</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== FLOTĂ ===================== -->
-<section id="flota">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Flota</p>
-      <h2>Mașina potrivită pentru fiecare drum</h2>
-      <p>Fie că pleci singur sau cu tot grupul, avem vehiculul care se potrivește. Toate vin cu șofer, verificate tehnic și pregătite pentru drumuri lungi — ca să te bucuri de călătorie, nu de logistică.</p>
-    </div>
-    <div class="fleet">
-      <article class="vcard rv">
-        <div class="pic"><span class="seats">4+1 locuri</span><img src="assets/img/sofer-usa.jpg" alt="Șofer deschizând ușa unui autoturism pentru pasager" loading="lazy" width="1300" height="900"></div>
-        <div class="body">
-          <h3>Autoturism</h3>
-          <p>Discret și confortabil, pentru transferuri la aeroport, întâlniri de afaceri sau escapade de weekend în doi.</p>
-          <ul><li>Aer condiționat</li><li>Portbagaj generos</li><li>Sosire relaxată</li></ul>
-          <a class="go js-quote" href="#contact" data-vehicle="Autoturism 4+1">Cere preț <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="vcard rv">
-        <div class="pic"><span class="seats">7+1 locuri</span><img src="assets/img/flota-minivan.jpg" alt="Minivan de 7+1 locuri pentru transport persoane" loading="lazy" width="1300" height="900"></div>
-        <div class="body">
-          <h3>Minivan</h3>
-          <p>Perfect pentru familie sau un grup restrâns de prieteni — plecați împreună, cu bagajele la bord și fără mașini separate.</p>
-          <ul><li>7 pasageri</li><li>Loc de bagaje</li><li>Scaune individuale</li></ul>
-          <a class="go js-quote" href="#contact" data-vehicle="Minivan 7+1">Cere preț <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="vcard rv">
-        <div class="pic"><span class="seats">8+1 locuri</span><img src="assets/img/flota-duba.jpg" alt="Dubă de 8+1 locuri pentru transport de grup" loading="lazy" width="1300" height="900"></div>
-        <div class="body">
-          <h3>Dubă</h3>
-          <p>Spațiu în plus pentru grup și bagaje. Alegerea potrivită pentru city break-uri și pentru transportul echipei la muncă.</p>
-          <ul><li>8 pasageri</li><li>Urcare comodă</li><li>Priză de încărcare</li></ul>
-          <a class="go js-quote" href="#contact" data-vehicle="Dubă 8+1">Cere preț <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="vcard rv">
-        <div class="pic"><span class="seats">până la 20+1</span><img src="assets/img/flota-microbuz.jpg" alt="Microbuz pentru transport de grup mare" loading="lazy" width="1300" height="900"></div>
-        <div class="body">
-          <h3>Microbuz</h3>
-          <p>Când plecați în număr mare: circuite turistice, nunți, echipe sportive sau deplasări de firmă — toți în același loc, buni de drum.</p>
-          <ul><li>Până la 20+1 locuri</li><li>Compartiment bagaje</li><li>Confort pe distanțe lungi</li></ul>
-          <a class="go js-quote" href="#contact" data-vehicle="Microbuz (peste 8+1)">Cere preț <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SERVICII ===================== -->
-<section id="servicii" class="services">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Servicii</p>
-      <h2>Oriunde vrei să ajungi, te ducem noi</h2>
-      <p>De la un circuit de câteva zile prin țară până la o cursă până la aeroport — ne ocupăm de traseu, de orar și de bagaje. Tu doar te urci și te bucuri de drum.</p>
-    </div>
-    <div class="srv-grid">
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
-        <h3>Circuite prin România</h3>
-        <p>De la mănăstirile din nord la cetățile din Transilvania și drumurile de munte — construim traseul, rezervăm ritmul și oprim unde vrei să te bucuri de priveliște.</p>
-      </article>
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></span>
-        <h3>Curse internaționale</h3>
-        <p>Ai treabă sau vacanță dincolo de graniță? Te ducem oriunde în Europa, cu același șofer pe tot drumul și fără bătăi de cap la vamă.</p>
-      </article>
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.8 16 14l-2-1 1.5-6.5a2 2 0 0 0-3.9-.9L10 12l-6 2 1.4 2.7 4.6-1 1 4.6 2.8 1.4Z"/></svg></span>
-        <h3>Transferuri aeroport</h3>
-        <p>Otopeni, Băneasa sau orice alt aeroport. Urmărim zborul, ajungem înaintea ta și avem loc pentru toate bagajele — chiar dacă întârzii.</p>
-      </article>
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.6"/></svg></span>
-        <h3>Nunți și evenimente</h3>
-        <p>Grija ta să fie petrecerea, nu cine cu ce ajunge acasă. Aducem invitații și îi ducem înapoi în siguranță, oricâte curse ar fi nevoie.</p>
-      </article>
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5"/></svg></span>
-        <h3>Transport angajați</h3>
-        <p>Ducem echipa la muncă la timp, zi de zi. Curse pe program fix pentru firme și puncte de lucru, cu contract și factură.</p>
-      </article>
-      <article class="srv rv">
-        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
-        <h3>Curse la cerere</h3>
-        <p>Ai un traseu neobișnuit sau un orar aparte? Spune-ne unde și când — construim cursa exact în jurul tău.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CUM FUNCȚIONEAZĂ ===================== -->
-<section id="cum">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Cum funcționează</p>
-      <h2>Simplu, din primul telefon</h2>
-    </div>
-    <div class="steps">
-      <div class="step rv">
-        <h3>Spune-ne unde vrei să ajungi</h3>
-        <p>Un telefon sau formularul completat: de unde pleci, unde mergi, câți sunteți și când. Restul îl gândim noi.</p>
+    <!-- ============ FLOTA ============ -->
+    <section class="sectiune flota" id="flota" aria-labelledby="flota-titlu">
+      <div class="cap">
+        <p class="eticheta">Flota</p>
+        <h2 id="flota-titlu" class="titlu-2">Două mașini. <br>Alegi după câți sunteți.</h2>
       </div>
-      <div class="step rv">
-        <h3>Primești prețul și traseul</h3>
-        <p>Îți propunem mașina potrivită și un preț fix, dinainte. Nimic ascuns, nimic care apare pe parcurs.</p>
-      </div>
-      <div class="step rv">
-        <h3>Te așteptăm la ușă</h3>
-        <p>Confirmăm ora și locul, iar șoferul ajunge înainte de program — cu mașina pregătită, curată și buni de plecare.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===================== DE CE NOI ===================== -->
-<section id="dece" class="why">
-  <div class="wrap why-grid">
-    <div class="rv">
-      <p class="eyebrow">De ce noi</p>
-      <h2>Călătorești liniștit, ca lângă un om de încredere</h2>
-      <ul class="checks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Șofer care cunoaște drumul.</b> Conduce mereu un om al nostru, cu experiență — tu stai relaxat și te uiți pe geam.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Preț fix, agreat dinainte.</b> Îl afli înainte de plecare și rămâne același la sosire. Fără surprize.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Mașini îngrijite.</b> Verificate tehnic și curate la fiecare cursă, cu aer condiționat și spațiu confortabil pentru drum lung.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>La timp, de fiecare dată.</b> Ajungem înainte de ora stabilită, iar la aeroport urmărim zborul ca să te așteptăm noi, nu invers.</span></li>
+      <div class="calcul" id="calcul">
+        <label for="persoane-slider" class="calcul-intrebare">Câți sunteți?</label>
+        <div class="calcul-rand">
+          <output class="calcul-nr" id="persoane-nr" for="persoane-slider">14</output>
+          <input type="range" id="persoane-slider" min="1" max="30" value="14" aria-describedby="persoane-rez">
+        </div>
+        <p class="calcul-rez" id="persoane-rez" aria-live="polite">Vă trebuie un <strong>Mercedes Sprinter</strong>. Încap toți, cu bagaje.</p>
+      </div>
+
+      <article class="masina masina-mare" id="sprinter" data-masina="sprinter">
+        <figure class="placa masina-foto">
+          <img loading="lazy" src="./foto/sprinter-alb.jpg" srcset="./foto/sprinter-alb-900.jpg 900w, ./foto/sprinter-alb.jpg 2000w" sizes="(max-width: 900px) 100vw, 60vw" width="2000" height="1500" alt="Microbuz Mercedes-Benz Sprinter alb, cu ușa laterală deschisă">
+          <figcaption><span>Mercedes-Benz Sprinter</span><span class="date">ușa glisantă, treaptă la urcare</span></figcaption>
+        </figure>
+        <div class="masina-fisa">
+          <p class="masina-locuri"><span>20</span><small>+1</small></p>
+          <h3 class="masina-nume">Mercedes-Benz Sprinter</h3>
+          <p>Microbuzul pentru grupuri mari: circuite de mai multe zile, nunți, echipe sportive, deplasări de firmă. Toată lumea în aceeași mașină, cu bagajele în compartimentul din spate.</p>
+          <dl class="specs">
+            <div><dt>Locuri</dt><dd>până la 20 de pasageri + șofer</dd></div>
+            <div><dt>Bagaje</dt><dd>compartiment separat, în spate</dd></div>
+            <div><dt>Climă</dt><dd>aer condiționat</dd></div>
+            <div><dt>Bun pentru</dt><dd>circuite, evenimente, echipe</dd></div>
+          </dl>
+          <a class="buton buton-plin js-alege" href="#oferta" data-masina="Mercedes Sprinter (până la 20+1)">Cere ofertă pentru Sprinter</a>
+        </div>
+        <figure class="placa masina-detaliu">
+          <img loading="lazy" src="./foto/sprinter-interior-900.jpg" width="900" height="675" alt="Interiorul unui microbuz Sprinter: două rânduri de scaune cu culoar la mijloc">
+          <figcaption><span>Interior Sprinter</span><span class="date">culoar la mijloc</span></figcaption>
+        </figure>
+      </article>
+
+      <article class="masina masina-mica" id="trafic" data-masina="trafic">
+        <figure class="placa masina-foto">
+          <img loading="lazy" src="./foto/trafic-alb.jpg" width="1024" height="768" alt="Renault Trafic alb pentru pasageri, cu geamuri pe toată lungimea">
+          <figcaption><span>Renault Trafic</span><span class="date">versiunea pentru pasageri</span></figcaption>
+        </figure>
+        <div class="masina-fisa">
+          <p class="masina-locuri"><span>8</span><small>+1</small></p>
+          <h3 class="masina-nume">Renault Trafic</h3>
+          <p>Pentru un grup mic sau o familie mare: transfer la aeroport, city break, un weekend la munte. Intră ușor pe străzile înguste și are loc de bagaje pentru toți opt.</p>
+          <dl class="specs">
+            <div><dt>Locuri</dt><dd>8 pasageri + șofer</dd></div>
+            <div><dt>Bagaje</dt><dd>în spatele ultimului rând</dd></div>
+            <div><dt>Climă</dt><dd>aer condiționat</dd></div>
+            <div><dt>Bun pentru</dt><dd>aeroport, familie, grupuri mici</dd></div>
+          </dl>
+          <a class="buton buton-plin js-alege" href="#oferta" data-masina="Renault Trafic (8+1)">Cere ofertă pentru Trafic</a>
+        </div>
+        <figure class="placa masina-detaliu">
+          <img loading="lazy" src="./foto/trafic-bord-900.jpg" width="900" height="677" alt="Bordul unui Renault Trafic, cu volanul și ecranul central">
+          <figcaption><span>Bord Trafic</span><span class="date">postul șoferului</span></figcaption>
+        </figure>
+      </article>
+
+      <p class="nota-foto">Fotografiile sunt ilustrative. Configurația exactă a mașinii o confirmăm odată cu oferta.</p>
+    </section>
+
+    <!-- ============ ȘOFERUL ============ -->
+    <section class="sectiune sofer" id="sofer" aria-labelledby="sofer-titlu">
+      <figure class="placa sofer-foto">
+        <img loading="lazy" src="./foto/sprinter-gri-900.jpg" width="900" height="1200" alt="Mercedes-Benz Sprinter gri, văzut din față, cu locul șoferului">
+        <figcaption><span>Locul șoferului</span><span class="date">ocupat de noi</span></figcaption>
+      </figure>
+      <div class="sofer-text">
+        <h2 id="sofer-titlu" class="titlu-2">Șoferul vine <br>cu mașina.</h2>
+        <p class="sofer-lead">Un microbuz cu mai mult de opt pasageri se conduce doar cu permis de categoria D1 sau D. Nu trebuie să-l aibă nimeni din grup: la volan stă un om de-al nostru, care cunoaște drumul și rămâne cu voi până la întoarcere.</p>
+        <ul class="sofer-lista">
+          <li><strong>Vine la adresa voastră.</strong> Ajunge înainte de ora stabilită, cu mașina curată și pregătită de drum.</li>
+          <li><strong>Conduce tot drumul.</strong> Voi stați, vorbiți, dormiți. Nimeni din grup nu stă cu ochii pe GPS.</li>
+          <li><strong>Vă așteaptă la opriri.</strong> La excursiile de o zi rămâne cu grupul până plecați înapoi.</li>
+          <li><strong>La aeroport urmărește zborul.</strong> Dacă aterizați mai târziu, vă așteaptă el pe voi.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ TRASEE ============ -->
+    <section class="sectiune trasee" id="trasee" aria-labelledby="trasee-titlu">
+      <div class="cap">
+        <p class="eticheta">Unde mergem</p>
+        <h2 id="trasee-titlu" class="titlu-2">Oriunde duce drumul.</h2>
+        <p class="cap-lead">Prin toată România și dincolo de graniță, la cerere. Voi spuneți destinația, noi facem traseul.</p>
+      </div>
+      <ul class="rute">
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Circuit prin România">
+          <span class="ruta-nume">Circuite prin România</span>
+          <span class="ruta-desc">Mănăstirile din nord, cetățile din Transilvania, Transfăgărășanul. Voi alegeți opririle, noi facem traseul.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Cursă în Europa">
+          <span class="ruta-nume">Curse în Europa</span>
+          <span class="ruta-desc">Același șofer tot drumul, dus și întors, oriunde ajunge drumul.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Transfer aeroport">
+          <span class="ruta-nume">Transfer aeroport</span>
+          <span class="ruta-desc">Otopeni, Băneasa sau orice alt aeroport, cu loc pentru toate bagajele.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Nuntă / eveniment">
+          <span class="ruta-nume">Nunți și evenimente</span>
+          <span class="ruta-desc">Aducem invitații și îi ducem acasă, câte curse e nevoie.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Transport angajați">
+          <span class="ruta-nume">Transport angajați</span>
+          <span class="ruta-desc">Curse pe program fix pentru firme, cu contract și factură.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
+        <li><a class="ruta js-alege" href="#oferta" data-scop="Cursă la cerere">
+          <span class="ruta-nume">Curse la cerere</span>
+          <span class="ruta-desc">Un traseu sau un orar neobișnuit? Spuneți-ne și îl construim în jurul vostru.</span>
+          <span class="ruta-sageata" aria-hidden="true">→</span></a></li>
       </ul>
-      <div class="stats">
-        <div class="stat"><b>4→20</b><span>locuri, pentru orice grup</span></div>
-        <div class="stat"><b>7/7</b><span>zile, inclusiv weekend</span></div>
-        <div class="stat"><b>RO + UE</b><span>circuite și curse externe</span></div>
-      </div>
-    </div>
-    <div class="why-pics rv">
-      <figure><img src="assets/img/interior-scaune.jpg" alt="Interior curat, cu scaune confortabile" loading="lazy" width="1300" height="900"></figure>
-      <figure><img src="assets/img/sofer-volan.jpg" alt="Șofer la volan, în timpul cursei" loading="lazy" width="1300" height="900"></figure>
-      <figure><img src="assets/img/bord.jpg" alt="Bordul unei mașini moderne de transport persoane" loading="lazy" width="1300" height="900"></figure>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== DESTINAȚII ===================== -->
-<section id="destinatii" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Unde te ducem</p>
-      <h2>Un drum pentru fiecare poveste</h2>
-      <p>Prin toată România și dincolo de graniță, la cerere. Tu spui destinația, noi ne ocupăm de traseu — și de tot ce e între plecare și întoarcere.</p>
-    </div>
-    <div class="dest">
-      <figure class="rv">
-        <img src="assets/img/excursii-munte.jpg" alt="Drum de munte, traseu de excursie" loading="lazy" width="1600" height="900">
-        <figcaption><strong>Circuite la munte</strong><span>Trasee prin Carpați, cu opriri la priveliști și popasuri unde vrei.</span></figcaption>
-      </figure>
-      <figure class="rv">
-        <img src="assets/img/transfer-aeroport.jpg" alt="Transfer către aeroport" loading="lazy" width="1300" height="900">
-        <figcaption><strong>Transferuri aeroport</strong><span>La orice oră, cu bagajele la bord și zborul urmărit.</span></figcaption>
-      </figure>
-      <figure class="rv">
-        <img src="assets/img/grup-bagaje.jpg" alt="Grup de persoane cu bagaje, în oraș" loading="lazy" width="1300" height="900">
-        <figcaption><strong>City break în grup</strong><span>Toți într-o mașină, de la o singură adresă — fără convoaie și fără griji cu parcarea.</span></figcaption>
-      </figure>
-      <figure class="rv">
-        <img src="assets/img/excursii-chei.jpg" alt="Peisaj de excursie, destinație turistică" loading="lazy" width="1300" height="900">
-        <figcaption><strong>Escapade de o zi</strong><span>Plecăm dimineața, ne întoarcem seara — iar șoferul rămâne alături de grup tot drumul.</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+    <!-- ============ CUM LUCRĂM ============ -->
+    <section class="sectiune cum" id="cum" aria-labelledby="cum-titlu">
+      <div class="cap">
+        <h2 id="cum-titlu" class="titlu-2">Trei mesaje <br>până la plecare.</h2>
+      </div>
+      <ol class="pasi">
+        <li>
+          <span class="pas-nr date">1</span>
+          <h3>Ne spuneți drumul</h3>
+          <p>De unde plecați, unde mergeți, câți sunteți și când. Un telefon sau formularul de mai jos.</p>
+        </li>
+        <li>
+          <span class="pas-nr date">2</span>
+          <h3>Primiți mașina și prețul</h3>
+          <p>Vă propunem Sprinterul sau Traficul și un preț fix. Nu apare nimic în plus pe parcurs.</p>
+        </li>
+        <li>
+          <span class="pas-nr date">3</span>
+          <h3>Șoferul e la ușă</h3>
+          <p>Confirmăm ora și locul. În ziua plecării, mașina vă așteaptă la adresă.</p>
+        </li>
+      </ol>
+    </section>
 
-<!-- ===================== CONTACT ===================== -->
-<section id="contact" class="contact">
-  <div class="wrap contact-grid">
-    <div class="contact-side rv">
-      <p class="eyebrow">Contact</p>
-      <h2>Hai să-ți planificăm drumul</h2>
-      <p>Completează formularul și mesajul pleacă direct pe WhatsApp, deja scris — îți răspundem cu prețul și traseul. Dacă e urgent, sună; suntem la telefon.</p>
-      <div class="direct">
-        <a class="js-tel" href="#">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
-          <span><b class="js-tel-label">Sună acum</b><span class="sub">Zilnic, inclusiv în weekend</span></span>
-        </a>
-        <a class="js-wa" href="#" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-5-4.4-5.1-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.3 1.1c.3.2.5.2.6.4.1.1.1.6-.1 1.2Z"/></svg></span>
-          <span><b>Scrie pe WhatsApp</b><span class="sub">Îți răspundem cu prețul cursei</span></span>
-        </a>
+    <!-- ============ OFERTĂ ============ -->
+    <section class="sectiune oferta" id="oferta" aria-labelledby="oferta-titlu">
+      <div class="oferta-stanga">
+        <h2 id="oferta-titlu" class="titlu-2">Unde <br>mergeți?</h2>
+        <p>Completați ce știți. Mesajul pleacă pe WhatsApp deja scris, iar noi răspundem cu mașina potrivită și prețul. Dacă e urgent, sunați.</p>
+        <a class="oferta-tel js-tel" href="tel:+40724436295"><span class="js-tel-label">0724 436 295</span></a>
+        <p class="oferta-mic">Telefon și WhatsApp · zilnic, inclusiv în weekend</p>
+        <a class="oferta-mail js-mail" href="mailto:contact@inchiriere-microbuze.ro">contact@inchiriere-microbuze.ro</a>
       </div>
-    </div>
 
-    <form id="quote" class="rv" novalidate>
-      <div class="f-row">
-        <div class="field">
-          <label for="nume">Nume</label>
-          <input id="nume" name="nume" type="text" autocomplete="name" placeholder="Numele tău" required>
+      <form class="formular" id="formular" novalidate>
+        <div class="camp camp-jumatate">
+          <label for="f-nume">Nume</label>
+          <input id="f-nume" name="nume" autocomplete="name" required>
         </div>
-        <div class="field">
-          <label for="telefon">Telefon</label>
-          <input id="telefon" name="telefon" type="tel" autocomplete="tel" inputmode="tel" placeholder="07xx xxx xxx" required>
+        <div class="camp camp-jumatate">
+          <label for="f-tel">Telefon</label>
+          <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required>
         </div>
-      </div>
-      <div class="f-row">
-        <div class="field">
-          <label for="plecare">Plecare din</label>
-          <input id="plecare" name="plecare" type="text" placeholder="Oraș sau adresă" required>
+        <div class="camp camp-jumatate">
+          <label for="f-plecare">Plecare din</label>
+          <input id="f-plecare" name="plecare" placeholder="oraș sau adresă" required>
         </div>
-        <div class="field">
-          <label for="destinatie">Destinație</label>
-          <input id="destinatie" name="destinatie" type="text" placeholder="Unde mergem" required>
+        <div class="camp camp-jumatate">
+          <label for="f-dest">Destinație</label>
+          <input id="f-dest" name="destinatie" placeholder="unde mergeți" required>
         </div>
-      </div>
-      <div class="f-row">
-        <div class="field">
-          <label for="cand">Data și ora</label>
-          <input id="cand" name="cand" type="datetime-local">
+        <div class="camp camp-jumatate">
+          <label for="f-data">Data plecării</label>
+          <input id="f-data" name="data" type="date" required>
         </div>
-        <div class="field">
-          <label for="pasageri">Număr persoane</label>
-          <select id="pasageri" name="pasageri">
-            <option>1 – 4 persoane</option>
-            <option>5 – 7 persoane</option>
-            <option>8 persoane</option>
-            <option>9 – 16 persoane</option>
-            <option>peste 16 persoane</option>
+        <div class="camp camp-jumatate">
+          <label for="f-pers">Câți sunteți</label>
+          <input id="f-pers" name="persoane" type="number" min="1" max="99" inputmode="numeric" required>
+        </div>
+        <div class="camp">
+          <label for="f-masina">Mașina</label>
+          <select id="f-masina" name="masina">
+            <option>Recomandați voi</option>
+            <option>Renault Trafic (8+1)</option>
+            <option>Mercedes Sprinter (până la 20+1)</option>
           </select>
         </div>
-      </div>
-      <div class="field">
-        <label for="masina">Mașina dorită</label>
-        <select id="masina" name="masina">
-          <option>Recomandați voi</option>
-          <option>Autoturism 4+1</option>
-          <option>Minivan 7+1</option>
-          <option>Dubă 8+1</option>
-          <option>Microbuz (peste 8+1)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="detalii">Detalii (opțional)</label>
-        <textarea id="detalii" name="detalii" placeholder="Bagaje, opriri pe traseu, cursă dus-întors..."></textarea>
-      </div>
-      <button class="btn btn-wa" type="submit">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.3 1.3-1.9 1.3-.5 0-1.1.2-3.6-.8-3-1.3-5-4.4-5.1-4.6-.2-.2-1.3-1.7-1.3-3.2s.8-2.3 1.1-2.6c.3-.3.6-.4.8-.4h.6c.2 0 .5-.1.7.5l1 2.4c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.3 1.1c.3.2.5.2.6.4.1.1.1.6-.1 1.2Z"/></svg>
-        Trimite cererea pe WhatsApp
-      </button>
-      <p class="form-note">Se deschide WhatsApp cu mesajul deja completat. Datele nu sunt stocate pe site.</p>
-    </form>
-  </div>
-</section>
+        <div class="camp">
+          <label for="f-detalii">Detalii <span>(opțional)</span></label>
+          <textarea id="f-detalii" name="detalii" rows="3" placeholder="dus-întors, câte zile, opriri, bagaje mari"></textarea>
+        </div>
+        <p class="formular-eroare" id="formular-eroare" role="alert" hidden></p>
+        <button class="buton buton-plin buton-lat" type="submit">Trimite cererea pe WhatsApp</button>
+        <p class="formular-nota">Se deschide WhatsApp cu mesajul completat. Nimic nu se salvează pe site.</p>
+      </form>
+    </section>
+  </main>
 
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="f-grid">
+  <footer class="subsol">
+    <p class="subsol-marca">Roby Tours</p>
+    <div class="subsol-grila">
       <div>
-        <a class="brand" href="#">
-          <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V8a2 2 0 0 1 2-2h9l5 5v6"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/><path d="M9.3 17.5h5.4M3 11h11"/></svg></span>
-          <span>Roby Tours<small>Circuite &amp; transport cu șofer</small></span>
-        </a>
-        <p class="f-about">Circuite prin toată România și curse internaționale la cerere, cu șofer. Autoturisme, dube și microbuze pentru vacanțe, evenimente, transferuri și grupuri de firmă.</p>
+        <p>Închiriere microbuze cu șofer. Mercedes Sprinter și Renault Trafic, prin România și în Europa.</p>
       </div>
       <div>
-        <h4>Navigare</h4>
-        <ul>
-          <li><a href="#flota">Flotă</a></li>
-          <li><a href="#servicii">Servicii</a></li>
-          <li><a href="#cum">Cum funcționează</a></li>
-          <li><a href="#dece">De ce noi</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a class="js-tel" href="tel:+40724436295"><span class="js-tel-label">0724 436 295</span></a>
+        <a class="js-wa" href="https://wa.me/40724436295">WhatsApp</a>
+        <a class="js-mail" href="mailto:contact@inchiriere-microbuze.ro">contact@inchiriere-microbuze.ro</a>
       </div>
       <div>
-        <h4>Contact</h4>
-        <ul>
-          <li><a class="js-tel" href="#"><span class="js-tel-label">Sună acum</span></a></li>
-          <li><a class="js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a class="js-mail" href="#">Email</a></li>
-          <li>Zilnic, inclusiv weekend</li>
-        </ul>
+        <a href="#flota">Flota</a>
+        <a href="#sofer">Șoferul</a>
+        <a href="#trasee">Unde mergem</a>
+        <a href="#oferta">Cere ofertă</a>
       </div>
     </div>
-    <div class="f-bottom">
-      <span>&copy; <span id="an"></span> Roby Tours — toate drepturile rezervate.</span>
-      <span>Circuite &amp; transport cu șofer &middot; România și internațional</span>
-    </div>
+    <p class="credite">Fotografii ilustrative. Parțial de pe Wikimedia Commons, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ro" rel="license noopener" target="_blank">CC BY-SA 4.0</a>: <span id="credite-lista">Matti Blume, Anthony Levrot, Crazy1880, Lukas 3z</span>.</p>
+    <p class="copy">© <span id="an">2026</span> Roby Tours</p>
+  </footer>
+
+  <div class="bara-mobil" id="bara-mobil">
+    <a class="js-tel" href="tel:+40724436295">Sună</a>
+    <a class="js-wa" href="https://wa.me/40724436295">WhatsApp</a>
   </div>
-</footer>
 
-<div class="callbar">
-  <a class="btn btn-gold js-tel" href="#">Sună</a>
-  <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
-</div>
-
-<script src="assets/js/main.js"></script>
-
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"AutoRental",
-  "name":"Roby Tours",
-  "description":"Roby Tours — circuite prin toată România și curse internaționale la cerere, cu șofer. Autoturisme, dube și microbuze de la 4+1 la 20+1 locuri, pentru vacanțe, evenimente, transferuri aeroport și grupuri de firmă.",
-  "url":"https://inchiriere-microbuze.ro/",
-  "image":"https://inchiriere-microbuze.ro/assets/img/flota-van-negru.jpg",
-  "telephone":"+40724436295",
-  "email":"contact@inchiriere-microbuze.ro",
-  "areaServed":{"@type":"Country","name":"România"},
-  "priceRange":"$$",
-  "openingHoursSpecification":[{
-    "@type":"OpeningHoursSpecification",
-    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens":"07:00","closes":"22:00"
-  }]
-}
-</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Roby Tours",
+    "url": "https://inchiriere-microbuze.ro/",
+    "telephone": "+40724436295",
+    "email": "contact@inchiriere-microbuze.ro",
+    "description": "Închiriere microbuze cu șofer: Mercedes Sprinter până la 20+1 locuri și Renault Trafic 8+1.",
+    "areaServed": ["RO", "EU"]
+  }
+  </script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

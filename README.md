@@ -1,54 +1,36 @@
-# inchiriere-microbuze.ro
+# inchiriere-microbuze.ro — Roby Tours
 
-Site de prezentare pentru transport persoane cu șofer (autoturisme, dube, microbuze).
-Vanilla HTML/CSS/JS, fără build, fără dependențe. Se poate deschide direct cu dublu-click
-pe `index.html` (toate căile sunt relative).
+Site de prezentare: închiriere microbuze cu șofer (Mercedes Sprinter, Renault Trafic).
+Vite + three.js (harta de relief din fundal). Brief-ul: `BRIEF.md`.
 
-## Structură
+## Lucru local
 
-```
-index.html
-assets/
-  css/style.css     stilul complet
-  js/main.js        CONFIG contact + meniu + reveal + formular WhatsApp
-  img/              fotografii (numerele de înmatriculare blurate)
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # rezultatul în dist/
 ```
 
-## Datele de contact — un singur loc
+## Unde se schimbă lucrurile
 
-Toate butoanele „Sună", linkurile WhatsApp și emailul se generează din blocul `CONFIG`
-de la începutul lui `assets/js/main.js`:
+| Ce | Unde |
+|---|---|
+| telefon, WhatsApp, e-mail | `CONFIG` la începutul lui `src/main.js` (+ `telephone` din JSON-LD în `index.html`) |
+| texte | `index.html` |
+| stil | `src/style.css` |
+| harta 3D și traseul | `src/relief.js` |
+| poze | `public/foto/` — se înlocuiesc păstrând numele |
 
-```js
-const CONFIG = {
-  telefon:  "+40 7xx xxx xxx",   // afișat pe site
-  whatsapp: "407xxxxxxxx",       // internațional, fără + și fără spații
-  email:    "contact@inchiriere-microbuze.ro",
-};
-```
+Formularul nu are backend: compune mesajul și deschide WhatsApp. Nimic nu se stochează.
 
-Mai trebuie actualizat manual numărul din JSON-LD (`"telephone"`), la finalul `index.html`.
+## Publicare (Hostinger prin Git)
 
-## Formularul
+1. Push pe `main` → GitHub Actions (`.github/workflows/hostinger.yml`) rulează `npm run build`
+   și pune conținutul lui `dist/` pe branch-ul **`hostinger`**.
+2. În hPanel → Website → **GIT**, repository-ul e legat de branch-ul **`hostinger`**
+   (nu `main`), directory `public_html`. Apoi **Deploy** (sau auto-deploy prin webhook).
 
-Nu trimite email și nu are backend: compune un mesaj complet (nume, telefon, plecare,
-destinație, dată, număr persoane, mașină, detalii) și deschide WhatsApp cu textul gata scris.
-Nimic nu se stochează pe site.
+`public/.htaccess` ține fișierele din `assets/` (cu hash în nume) în cache un an, iar
+`index.html` se revalidează mereu, ca vizitatorii să vadă imediat versiunea nouă.
 
-## Fotografii
-
-Stock Pexels (licență liberă, comercial). Numerele de înmatriculare vizibile au fost
-acoperite prin blur. Când există poze reale cu mașinile, se înlocuiesc fișierele din
-`assets/img/` păstrând aceleași nume.
-
-## Publicare pe Hostinger prin Git
-
-hPanel → Website → **GIT** → *Create a new repository*:
-
-- Repository: `https://github.com/RrobertPopa/inchiriere-microbuze.git`
-- Branch: `main`
-- Directory: `public_html`
-
-Apoi **Deploy**. La fiecare `git push` se apasă din nou *Deploy* (sau se activează
-auto-deploy prin webhook-ul afișat de Hostinger, adăugat în GitHub la
-Settings → Webhooks).
+Site-ul vechi (vanilla) e păstrat în `_vechi/`.
