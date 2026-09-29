@@ -1,0 +1,13 @@
+# Fișierele din assets/ au hash în nume → se pot ține în cache un an.
+# Pagina HTML se revalidează mereu, ca vizitatorii să primească versiunea nouă imediat.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <If "%{REQUEST_URI} =~ m#^/foto/#">
+    Header set Cache-Control "public, max-age=604800"
+  </If>
+</IfModule>
