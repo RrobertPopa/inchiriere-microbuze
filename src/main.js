@@ -1,6 +1,5 @@
 import './style.css';
 import { porneste } from './relief.js';
-import credite from './credite.json';
 
 /* -------------------------------------------------------------
    CONFIG — singurul loc unde se schimbă datele de contact.
@@ -23,20 +22,6 @@ document.querySelectorAll('.js-wa').forEach((a) => {
   a.target = '_blank'; a.rel = 'noopener';
 });
 document.getElementById('an').textContent = new Date().getFullYear();
-
-/* credite foto: fiecare autor cu link la pagina lui de pe Commons */
-{
-  const autori = new Map();
-  for (const c of credite) if (!autori.has(c.autor)) autori.set(c.autor, c.pagina);
-  const el = document.getElementById('credite-lista');
-  el.textContent = '';
-  [...autori].forEach(([autor, pagina], i) => {
-    if (i) el.append(', ');
-    const a = document.createElement('a');
-    a.href = pagina; a.textContent = autor; a.target = '_blank'; a.rel = 'noopener';
-    el.append(a);
-  });
-}
 
 /* ---------- lumea ---------- */
 const canvas = document.getElementById('relief');

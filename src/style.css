@@ -7,7 +7,7 @@
   --hartie-2: #e5ddcc;
   --hartie-3: #f6f2ea;
   --cerneala: #1d2126;
-  --cerneala-2: #4c5157;
+  --cerneala-2: #41464c;
   --linie: rgba(29, 33, 38, .16);
   --linie-tare: rgba(29, 33, 38, .34);
   --caramida: #b8431f;
@@ -257,7 +257,7 @@ input[type="range"]::-moz-range-thumb {
 .masina-mare .masina-detaliu { grid-column: 9 / -1; grid-row: 2; }
 .masina-mica .masina-foto { grid-column: 6 / -1; grid-row: 1 / span 2; }
 .masina-mica .masina-fisa { grid-column: 1 / span 5; grid-row: 1; }
-.masina-mica .masina-detaliu { grid-column: 2 / span 4; grid-row: 2; }
+.masina-mica .masina-detaliu { grid-column: 1 / span 5; grid-row: 2; }
 .masina-foto img { aspect-ratio: 4 / 3; object-fit: cover; }
 .masina-mica .masina-foto img { aspect-ratio: 4 / 3; }
 .masina-detaliu img { aspect-ratio: 4 / 3; object-fit: cover; }
@@ -381,8 +381,6 @@ input[type="range"]::-moz-range-thumb {
 .subsol-grila p { color: rgba(239, 233, 221, .72); max-width: 38ch; }
 .subsol-grila a { text-decoration: none; padding: 7px 0; overflow-wrap: anywhere; }
 .subsol-grila a:hover { color: #e98a68; }
-.credite { margin-top: 48px !important; font-family: var(--mono); font-size: 11.5px; color: rgba(239, 233, 221, .55); line-height: 1.7; }
-.credite a { color: rgba(239, 233, 221, .75); }
 .copy { margin-top: 10px !important; font-family: var(--mono); font-size: 11.5px; color: rgba(239, 233, 221, .55); }
 
 /* ---------- bara mobil ---------- */
@@ -402,11 +400,10 @@ input[type="range"]::-moz-range-thumb {
 
   .masina { grid-template-columns: minmax(0, 1fr); }
   .masina .masina-foto, .masina .masina-fisa, .masina .masina-detaliu { grid-column: 1; grid-row: auto; }
-  .masina-detaliu { width: 70%; justify-self: end; margin-top: -8px; }
-  .masina-mica .masina-detaliu { justify-self: start; }
+  .masina-detaliu { width: 100%; }
 
   .sofer { grid-template-columns: minmax(0, 1fr); }
-  .sofer-foto { width: min(420px, 78%); }
+  .sofer-foto img { aspect-ratio: 4 / 3; object-position: 40% 55%; }
   .ruta { grid-template-columns: minmax(0, 1fr) 32px; }
   .ruta-desc { grid-column: 1; }
   .ruta-sageata { grid-row: 1; grid-column: 2; }
@@ -436,6 +433,14 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 560px) {
   body { font-size: 16.5px; }
+  .date, .hero-nota, .legenda, .nota-foto, .oferta-mic, .formular-nota, .meniu-nota, .specs dt, .eticheta {
+    font-size: 13.5px; color: var(--cerneala);
+  }
+  .placa figcaption { font-size: 14.5px; }
+  .placa figcaption .date { color: var(--cerneala); }
+  .marca-sub { font-size: 11.5px; color: var(--cerneala); }
+  .eticheta { color: var(--caramida-inchis); }
+  .nota-foto { background: rgba(239, 233, 221, .85); padding: 6px 0; line-height: 1.5; }
   .hero-titlu { font-size: 13.4vw; font-stretch: 106%; letter-spacing: -.05em; line-height: .96; }
   .eticheta-oras { display: none; }
   .buton-mic { display: none; }
@@ -446,7 +451,6 @@ input[type="range"]::-moz-range-thumb {
   .camp-jumatate { grid-column: 1; }
   .calcul { grid-template-columns: minmax(0, 1fr); padding: 18px 16px; }
   .calcul-nr { font-size: 46px; }
-  .masina-detaliu { width: 82%; }
   .specs div { grid-template-columns: 6.4em minmax(0, 1fr); }
 }
 
