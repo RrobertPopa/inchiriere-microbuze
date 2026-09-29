@@ -261,6 +261,7 @@ input[type="range"]::-moz-range-thumb {
 .masina-foto img { aspect-ratio: 4 / 3; object-fit: cover; }
 .masina-mica .masina-foto img { aspect-ratio: 4 / 3; }
 .masina-detaliu img { aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 901px) { .masina-detaliu { margin-top: clamp(20px, 2.6vw, 40px); } }
 
 .masina-fisa { background: rgba(239, 233, 221, .86); padding: 4px 0 8px; }
 .masina-locuri { font-weight: 800; font-stretch: 125%; line-height: .85; letter-spacing: -.05em; color: var(--caramida); }
