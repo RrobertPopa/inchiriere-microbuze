@@ -455,6 +455,57 @@ input[type="range"]::-moz-range-thumb {
   .specs div { grid-template-columns: 6.4em minmax(0, 1fr); }
 }
 
+/* ---------- SEO: H1-ul de acasă e linia mică de sus; titlul mare rămâne paragraf ---------- */
+h1.hero-sus { font-weight: 400; }
+.masina-link { display: inline-block; margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--caramida); text-decoration: none; padding: 6px 0; }
+.masina-link:hover { text-decoration: underline; }
+
+/* ---------- paginile de serviciu (scripts/genereaza.mjs) ---------- */
+.pg-main { max-width: var(--max); margin: 0 auto; padding: calc(var(--antet) + clamp(20px, 4vh, 48px)) var(--gutter) 0; }
+.pg .antet { background: rgba(239, 233, 221, .94); }
+.pg-fir { color: var(--cerneala-2); margin-bottom: clamp(20px, 3vh, 36px); }
+.pg-fir a { color: inherit; }
+.pg-cap { max-width: 920px; }
+.pg-h1 {
+  font-weight: 800; font-stretch: 118%;
+  font-size: clamp(36px, 6.4vw, 92px);
+  line-height: 1.02; letter-spacing: -.04em;
+  padding-bottom: .06em; text-wrap: balance;
+}
+.pg-lead { font-size: clamp(17px, 1.45vw, 20px); max-width: 56ch; margin-top: 20px; }
+.pg-corp {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 5vw, 80px);
+  align-items: start; margin-top: clamp(56px, 8vw, 110px);
+}
+.pg-bloc + .pg-bloc { margin-top: clamp(36px, 5vw, 56px); }
+.pg-h2 { font-weight: 750; font-stretch: 112%; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 14px; }
+.pg-bloc p { max-width: 60ch; }
+.pg-lista { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 62ch; }
+.pg-lista li { position: relative; padding-left: 26px; }
+.pg-lista li::before { content: ''; position: absolute; left: 0; top: .72em; width: 14px; height: 2px; background: var(--caramida); }
+.pg-faq details { border-top: 1px solid var(--linie-tare); max-width: 62ch; }
+.pg-faq details:last-child { border-bottom: 1px solid var(--linie-tare); }
+.pg-faq summary { cursor: pointer; font-weight: 650; padding: 14px 28px 14px 0; position: relative; list-style: none; }
+.pg-faq summary::-webkit-details-marker { display: none; }
+.pg-faq summary::after { content: '+'; position: absolute; right: 2px; top: 10px; font-size: 22px; color: var(--caramida); }
+.pg-faq details[open] summary::after { content: '–'; }
+.pg-faq details p { padding: 0 0 16px; color: var(--cerneala-2); }
+.pg-masini { display: grid; gap: 22px; position: sticky; top: calc(var(--antet) + 20px); }
+.pg-masina-link { padding: 8px 2px 2px; font-size: 15px; }
+.pg-masina-link a { color: var(--caramida); font-weight: 600; text-decoration: none; }
+.pg-oferta {
+  margin-top: clamp(72px, 10vw, 140px); padding: clamp(28px, 4vw, 56px);
+  background: var(--hartie-3); border: 1px solid var(--linie-tare);
+}
+.pg-oferta > p { max-width: 52ch; margin-top: 14px; }
+.pg-oferta .oferta-mic { font-family: var(--mono); font-size: 12.5px; color: var(--cerneala-2); margin-top: 16px; }
+.pg-altele { margin-top: clamp(64px, 9vw, 120px); }
+.pg-altele .rute { margin-top: 8px; }
+@media (max-width: 900px) {
+  .pg-corp { grid-template-columns: minmax(0, 1fr); }
+  .pg-masini { position: static; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }

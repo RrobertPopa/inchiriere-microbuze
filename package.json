@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/genereaza.mjs && vite",
+    "build": "node scripts/genereaza.mjs && vite build && node scripts/dupa-build.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

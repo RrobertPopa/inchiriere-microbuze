@@ -1,2 +1,13 @@
 node_modules
 dist
+
+# pagini generate de scripts/genereaza.mjs
+/mercedes-sprinter-20-locuri/
+/renault-trafic-8-1/
+/mercedes-vito-8-1/
+/transfer-aeroport-otopeni/
+/transport-nunta/
+/transport-angajati/
+/excursii-circuite-romania/
+/curse-europa/
+# sfârșit pagini generate
